@@ -1,38 +1,42 @@
 const expect = require('chai').expect;
 const utils = require('./utils');
 
-it('should add two numbers', () => {
-  const res = utils.add(33, 11);
+describe('Utils', () => {
+  describe('#add', () => {
+    it('should add two numbers', () => {
+      const res = utils.add(33, 11);
 
-  expect(res)
-    .to.equal(44)
-    .to.be.a('number');
-});
-
-it('should async add two numbers', done => {
-  //done is used when testing async code
-  utils.asyncAdd(4, 3, sum => {
-    expect(sum)
-      .to.equal(7)
-      .to.be.a('number');
-    done();
+      expect(res)
+        .to.equal(44)
+        .to.be.a('number');
+    });
   });
-});
 
-it('should square a number', () => {
-  const res = utils.square(3);
+  it('should async add two numbers', done => {
+    //done is used when testing async code
+    utils.asyncAdd(4, 3, sum => {
+      expect(sum)
+        .to.equal(7)
+        .to.be.a('number');
+      done();
+    });
+  });
 
-  expect(res)
-    .to.equal(9)
-    .to.be.a('number');
-});
+  it('should square a number', () => {
+    const res = utils.square(3);
 
-it('should async square a number', done => {
-  utils.asyncSquare(3, square => {
-    expect(square)
+    expect(res)
       .to.equal(9)
       .to.be.a('number');
-    done();
+  });
+
+  it('should async square a number', done => {
+    utils.asyncSquare(3, square => {
+      expect(square)
+        .to.equal(9)
+        .to.be.a('number');
+      done();
+    });
   });
 });
 
